@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+<!--        &lt;!&ndash;springmvc的配置文件&ndash;&gt;-->
+
+<!--</beans>-->
+<!--这是一个servlet文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:p="http://www.springframework.org/schema/p"
+
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+
+                http://www.springframework.org/schema/context
+
+                http://www.springframework.org/schema/context/spring-context.xsd
+
+                http://www.springframework.org/schema/mvc
+
+                http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--        &lt;!&ndash; 静态资源访问 &ndash;&gt;-->
+
+    <!--        <mvc:resources location="/img/" mapping="/img/**"/>-->
+
+    <!--        <mvc:resources location="/js/" mapping="/js/**"/>-->
+
+    <!--开启controller,找到Controller，让controllers下的Controller创建成对象，默认是单例对象-->
+    <context:component-scan base-package="springMvc.learn">
+<!--        只扫描Controller类型-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--视图解析器-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<!--过滤静态资源-->
+<!--    <mvc:resources mapping="/css/**" location="/css/"/>-->
+<!--    <mvc:resources mapping="/images/**" location="/images/"/>-->
+<!--    <mvc:resources mapping="/js/" location="/js/"/>-->
+
+
+    <!--        配置StringToDate类型转换器         -->
+    <!--  id类型转换器的服务名字 class是类  -->
+
+    <!--        启动ConversionService服务-->
+    <mvc:annotation-driven/>
+    <!--开启springmvc注解的支持，让@requestmapping等生效，相当于把处理器适配器和处理器映射器配上了-->
+    <!--        处理器适配器，处理器映射器，视图解析器是springmvc三大组件，当时用<mvc:annotation-driven/>时，相当于默认加载了这三大组件-->
+
+
+<!--    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+<!--        <property name="maxUploadSize" value="10000000000"/>-->
+<!--    </bean>-->
+
+
+
+</beans>

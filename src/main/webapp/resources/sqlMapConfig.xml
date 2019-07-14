@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    spring整合mybatis后就不需要这个文件了-->
+<!--    配置环境-->
+    <environments default="mysql">              <!--默认值-->
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>   <!--数据类型-->
+            <dataSource type="POOLED">          <!--应用连接池-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>        <!--驱动-->
+                <property name="url" value="jdbc:mysql:///ssm?characterEncoding=utf8"/>  <!--可以省略localhost:3306链接-->
+                <property name="username" value="root"/>                       <!--用户名-->
+                <property name="password" value="luohepeng"/>                  <!--密码-->
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--    引入映射配置文件-->
+    <mappers>
+<!--        <mapper class="springMvc.learn.dao.AccountDao"/>              -->
+            <package name="springMvc.learn.dao"/>                  <!--下的所有dao文件-->
+<!--        <mapper resource="springMvc/learn/xxxx.xml"/>-->
+    </mappers>
+
+</configuration>
