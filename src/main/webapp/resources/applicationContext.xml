@@ -65,7 +65,6 @@
     <context:component-scan base-package="springMvc.learn">
         <!--        配置哪些注解不扫描,spring只做业务层和持久层，因此不扫描controller-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-
     </context:component-scan>
     <!--    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
     <!--        <property name="prefix" value="/WEB-INF/pages/"/>-->
@@ -73,9 +72,6 @@
     <!--    </bean>-->
 
 <!--    spring整合mybatis-->
-
-
-
 <!--    配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
@@ -109,7 +105,5 @@
     <aop:config>
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* springMvc.learn.service.impl.*ServiceImp.*(..))"/>
     </aop:config>
-
-
 
 </beans>

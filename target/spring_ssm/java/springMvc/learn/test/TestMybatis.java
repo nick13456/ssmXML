@@ -8,7 +8,6 @@ import org.junit.Test;
 import springMvc.learn.dao.AccountDao;
 import springMvc.learn.domain.Account;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
